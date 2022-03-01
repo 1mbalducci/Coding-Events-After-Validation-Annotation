@@ -2,6 +2,7 @@ package org.launchcode.Coding.Events.after.Validation.Annotation.models;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
@@ -24,11 +25,19 @@ public class Event {
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
-    public Event(String name, String description, String contactEmail) {
+    @NotBlank(message = "Location is required")
+    @NotNull(message="Please enter a valid event location.")
+    private String eventLocation;
+
+
+    private EventType type;
+
+    public Event(String name, String description, String contactEmail, EventType type) {
         this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
+        this.type= type;
     }
 
     public Event() {
@@ -62,6 +71,22 @@ public class Event {
 
     public int getId() {
         return id;
+    }
+
+    public String getEventLocation() {
+        return eventLocation;
+    }
+
+    public void setEventLocation(String eventLocation) {
+        this.eventLocation = eventLocation;
+    }
+
+    public EventType getType() {
+        return type;
+    }
+
+    public void setType(EventType type) {
+        this.type = type;
     }
 
     @Override

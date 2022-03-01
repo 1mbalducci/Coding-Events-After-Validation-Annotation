@@ -17,9 +17,9 @@ public class EventData {
         return events.values();
     }
 
-    public static Event getById(int id) {
-        return events.get(id);
-    }
+//    public static Event getById(int id) {
+//        return events.get(id);
+//    }
 
     public static void add(Event event) {
         events.put(event.getId(), event);
